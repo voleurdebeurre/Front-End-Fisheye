@@ -1,50 +1,319 @@
 @import url("photographer.css");
+:root{
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --main-color: #901c1c;
+  --light-bg-color: #fafafa;
+  --main-text-color: #d3573c;
+  --sec-color: #d3573C;
+  --sec-text-color: #525252;
+  --sec-text-hover-color: #901c1c;
 
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  --fs-xl: 3rem;
+  --fs-l: 2rem;
+  --fs-m: 1rem;
+  --fs-s: .75rem;
+  --fs-xs: .5rem;
+
+  --fw-bold: 700;
+  --fw-normal: 400;
+  --fw-light: 300;
 }
 
+*{
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ---------------------- */
+/* TEXT DECLARATIONS */
+/* ---------------------- */
+
+h1, h2, h3, h4, h5, p, a{
+  padding: 0; margin: 0;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+p{
+  font-size: var(--fs-m);
+}
+
+h1{
+  font-size: var(--fs-xl);
+}
+
+h2{
+  font-size: var(--fs-l);
+}
+
+h3{
+  font-size: var(--fs-m);
+}
+
+h4{
+  font-size: var(--fs-s);
+}
+
+h5{
+  font-size: var(--fs-s);
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 3rem;
+}
+
+/* ---------------------- */
+/* COMPONENTS */
+/* ---------------------- */
+
+.rounded-picture{
+  border-radius: 50%;
+  width: 200px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: all .2s;
+}
+
+.rounded-picture:hover {
+  transform: scale(1.01);
+  transition: all .2s;
+}
+
+/* ---------------------- */
+/* INDEX */
+/* ---------------------- */
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901C1C;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin: 5rem 0;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+  color: var(--sec-color);
+  margin: 1rem 0 0 0;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer_section article h3 {
+  color: var(--main-color);
+  margin: 0 0 .10rem 0;
+}
+
+.photographer_section article h4 {
+  color: var(--color-black);
+}
+
+.photographer_section article h5 {
+  color: var(--sec-text-color);
+}
+
+/* ---------------------- */
+/* PHOTOGRAPHER */
+/* ---------------------- */
+
+.photographer-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 1rem;
+  background: var(--light-bg-color);
+  padding: 1rem 3rem;
+  align-items: center;
+}
+
+.photographer-header h2 {
+  color: var(--sec-color);
+  font-size: var(--fs-xl);
+}
+
+.photographer-header h3 {
+  color: var(--main-color);
+  margin: 0 0 .5rem 0;
+  font-size: var(--fs-l);
+}
+
+.photographer-header h4 {
+  color: var(--sec-text-color);
+  font-size: var(--fs-m);
+}
+
+.photographer-footer_meta{
+  position: fixed;
+  bottom: 0;
+  right: 3rem;
+  background: var(--sec-color);
+  border-radius: .5rem .5rem 0 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photographer-footer_meta p{
+  font-size: var(--fs-s)
+}
+
+.photographer-footer_likes{
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  align-items: center;
+}
+
+.photographer-header_contact{
+  display: flex;
+  justify-content: center;
+}
+
+.photographer-gallery{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.gallery-filter{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.gallery-filter p{
+  font-weight: var(--fw-bold);
+}
+
+.gallery-filter-sorting{
+  position: relative;
+  width: 200px;
+}
+
+.gallery-filter-sorting select{
+  display: none;
+}
+
+.select-selected{
+  background: var(--main-color);
+  border-radius: .5rem .5rem 0 0;
+}
+
+.select-selected:after{
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: var(--color-white) transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--color-white) transparent;
+  top: 7px;
+}
+
+.select-items div,.select-selected {
+  color: var(--color-white);
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(255, 255, 255, .6) transparent;
+  cursor: pointer;
+}
+
+.select-items {
+  position: absolute;
+  background: var(--main-color);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0 0 .5rem .5rem;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background: rgba(255, 255, 255, .6);
+}
+
+.select-items div:last-child{
+  border-color: transparent;
+  border-radius: 0 0 .5rem .5rem;
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 2rem 0;
+}
+
+.gallery-item{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gallery-item figure, .gallery-item figure a img{
+  margin: 0;
+  width: 100%;
+}
+
+.gallery-item figure a img{
+  border-radius: .225rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.gallery-item figcaption{
+  color: var(--main-color);
+  font-weight: var(--fw-bold);
+}
+
+.gallery-likes-counter{
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  gap: .5rem;
+}
+
+.gallery-likes-counter p{
+  color: var(--main-color);
+  font-weight: var(--fw-bold);
+}
+
+.gallery-likes-counter a svg{
+  fill: var(--main-color);
 }
