@@ -1,35 +1,31 @@
-//Mettre le code JavaScript lié à la page photographer.html
-class SinglePhotographerPage{
+class SinglePhotographer{
   constructor(){
-    this.$singlePhotographerSection = document.querySelector(".photographer-single-page")
     this.photographersFetcher = new PhotographersData("./data/photographers.json")
   }
 
   async main(){
-    // Contient les données du json source
-    const photographersData = await this.photographersFetcher.getPhotographers()
-
-    // Contient les données du node photographers
-    const Photographers = photographersData.photographers
-    // Contient les données du node media
-    const PhotographersMedias = photographersData.media
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const clickedPhotographer = urlParams.get("id")
 
+    // Contient les données du json source
+    const photographersData = await this.photographersFetcher.getPhotographers()
 
-    // Affiche les cartes de photographes
-    Photographers.forEach((photographer) => {
+    // Contient les données du node photographers
+    const photographersNode = photographersData.photographers
+
+    // Contient les données du node photographers
+    const photographersMediaNode = photographersData.media
+
+    photographersNode.forEach((photographer) => {
       if(photographer.id == clickedPhotographer){
-        const SinglePhotographer = new PhotographerSinglePageMetaDisplay(photographer)
-        this.$singlePhotographerSection.appendChild(
-          SinglePhotographer.createSinglePhotographerMeta()
-        )
+        createSinglePhotographerCard(photographersNode, photographersMediaNode, photographer)
+        createPhotographerMediaGallery(photographersMediaNode, photographer)
       }
     });
   }
 }
 
-const home = new SinglePhotographerPage()
+const home = new SinglePhotographer()
 home.main()

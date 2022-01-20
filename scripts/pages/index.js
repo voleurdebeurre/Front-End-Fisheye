@@ -9,14 +9,27 @@ class HomePhotographers{
     const photographersData = await this.photographersFetcher.getPhotographers()
 
     // Contient les données du node photographers
-    const Photographers = photographersData.photographers
+    const photographersNode = photographersData.photographers
 
-    // Affiche les cartes de photographes
-    Photographers.forEach((photographer) => {
-        const PhotographerData = new PhotographerCardDisplay(photographer);
-        this.$photographersSection.appendChild(
-          PhotographerData.createPhotographerCard()
-        )
+    photographersNode.forEach((photographer) => {
+      const photographerName = photographer.name;
+      const photographerId = photographer.id;
+      const photographerCity = photographer.city;
+      const photographerCountry = photographer.country;
+      const photographerTagline = photographer.tagline;
+      const photographerPrice = photographer.price;
+      const photographerPortrait = photographer.portrait;
+
+      this.$photographersSection.appendChild(
+        createPhotographerCard(photographerName,
+                                photographerId,
+                                photographerCity,
+                                photographerCountry,
+                                photographerTagline,
+                                photographerPrice,
+                                photographerPortrait
+                              )
+      );
     });
   }
 }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
@@ -13,9 +13,60 @@
     </header>
     <main id="main">
       <section class="photographer-single-page">
+        <section class="photographer-header">
+          <div class="photographer-footer_meta">
+            <div class="photographer-footer_likes">
+              <p class="photographer-global-likes"></p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>
+            </div>
+            <p class="photographer-price"></p>
+          </div>
+          <div class="photographer-header_meta">
+            <h2></h2>
+            <h3></h3>
+            <h4></h4>
+          </div>
+          <div class="photographer-header_contact">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          </div>
+          <div class="photographer-header_photo">
+          </div>
+        </section>
+        <section class="photographer-gallery">
+          <div class="gallery-filter">
+            <p>Trier par</p>
+            <div class="gallery-filter-sorting">
+              <select name="gallery-filter-sorting">
+                <option value="Popularité">Popularité</option>
+                <option value="Date">Date</option>
+                <option value="Titre">Titre</option>
+              </select>
+            </div>
+          </div>
+          <div class="gallery">
 
+          </div>
+        </section>
       </section>
     </main>
+    <div class="lightbox-gallery">
+      <div class="lightbox-controls">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+        </a>
+      </div>
+      <div class="gallery-spotlight">
+        <figure>
+        </figure>
+        <figcaption>
+        </figcaption>
+      </div>
+      <div class="lightbox-controls">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+        </a>
+      </div>
+    </div>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -33,7 +84,8 @@
 		</div>
 
     <!-- Factory -->
-    <script src="./scripts/factories/PhotographerCardDisplay.js"></script>
+    <script src="./scripts/factories/singleFactory.js"></script>
+    <script src="./scripts/factories/mediaGalleryFactory.js"></script>
 
     <!-- Fetch les données sources -->
     <script src="./scripts/utils/fetchData.js"></script>
