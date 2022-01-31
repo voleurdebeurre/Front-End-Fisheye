@@ -38,6 +38,10 @@ function closeMediaGallery(){
 
 // Affiche la lightbox au click sur un média
 function displayClickedMedia(clickedMedia){
+    let removeActiveMediaClass = document.querySelectorAll(".media-active");
+    removeActiveMediaClass.forEach((activeMedia) =>{
+        activeMedia.classList.remove("media-active")
+    })
     const galleryModal = document.querySelectorAll(".lightbox-gallery")[0]
     galleryModal.style.display = "flex";
 
@@ -47,21 +51,31 @@ function displayClickedMedia(clickedMedia){
     allMediasInGallery.forEach((singleMediaInGallery) => {
         if(singleMediaInGallery.getAttribute("data-media-id") == getClickedMediaId){
             singleMediaInGallery.classList.add("media-active")
+            addOrRemoveNavArrows()
         }
     });
 
-    addOrRemoveNavArrows()
 }
 
 function addOrRemoveNavArrows(){
+    
     const activeMediaItem = document.querySelectorAll(".media-active")[0]
     const allMediasInGallery = document.querySelectorAll(".in-lightbox")
     const galleryLeftArrow = document.querySelectorAll(".lightbox-controls:nth-child(1)")[0].children[0].children[0]
     const galleryRightArrow = document.querySelectorAll(".lightbox-controls:nth-child(3)")[0].children[0].children[0]
+
+    console.log(activeMediaItem, allMediasInGallery[0], allMediasInGallery[allMediasInGallery.length -1])
     if(activeMediaItem == allMediasInGallery[0]){
+        console.log("premier media")
         galleryLeftArrow.style.display = "none"
+        galleryRightArrow.style.display = "block"
     }else if(activeMediaItem == allMediasInGallery[allMediasInGallery.length -1]){
-        galleryRightArrow.style.display = "none"
+        galleryRightArrow.style.display = "none"   
+        galleryLeftArrow.style.display = "block"
+        console.log("dernier media")
+    }else{
+        galleryLeftArrow.style.display = "block"
+        galleryRightArrow.style.display = "block"
     }
 }
 
@@ -81,8 +95,6 @@ function checkKey(e) {
 
 function nextGalleryItem(){
     addOrRemoveNavArrows()
-    let galleryLeftArrow = document.querySelectorAll(".lightbox-controls:nth-child(1)")[0]
-    galleryLeftArrow.children[0].children[0].style.display = "block"
     const activeMediaItem = document.querySelectorAll(".media-active")[0]
     activeMediaItem.nextSibling.classList.add("media-active")
     activeMediaItem.classList.remove("media-active")
@@ -91,8 +103,6 @@ function nextGalleryItem(){
 
 function prevGalleryItem(){
     addOrRemoveNavArrows()
-    let galleryRightArrow = document.querySelectorAll(".lightbox-controls:nth-child(3)")[0]
-    galleryRightArrow.children[0].children[0].style.display = "block"
     const activeMediaItem = document.querySelectorAll(".media-active")[0]
     activeMediaItem.previousElementSibling.classList.add("media-active")
     activeMediaItem.classList.remove("media-active")

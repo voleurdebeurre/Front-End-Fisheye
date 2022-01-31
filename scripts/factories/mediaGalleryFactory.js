@@ -61,6 +61,7 @@ function createPhotographerMediaGallery(photographersMediaNode,
     // Lien autour de l'icone
     const galleryItemLikesIcon = document.createElement("a")
     galleryItemLikesIcon.setAttribute("onClick", "actionOnLikesCounter(this)")
+    galleryItemLikesIcon.setAttribute("href", "javascript:;")
     const galleryItemSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     galleryItemSvg.setAttribute("width", "24")
     galleryItemSvg.setAttribute("height", "24")

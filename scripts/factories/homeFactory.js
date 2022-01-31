@@ -12,7 +12,7 @@ function createPhotographerCard(photographerName, photographerId, photographerCi
   // Ajoute les attributs src et alt à l'image
   Object.assign(img, {
     src: "./assets/photographers/" + photographerPortrait,
-    alt: photographerName
+    alt: "portrait de " + photographerName
   })
   img.classList.add("rounded-picture");
 

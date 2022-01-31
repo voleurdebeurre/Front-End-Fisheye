@@ -32,7 +32,7 @@ function createSinglePhotographerCard(photographersNode,
   // Ajoute les attributs src et alt à l'image
   Object.assign(portrait, {
     src: "./assets/photographers/" + photographerPortrait,
-    alt: photographerName
+    alt: "Portrait de " + photographerName
   })
   portrait.classList.add("rounded-picture");
   photographerPortraitContainer.appendChild(portrait)
