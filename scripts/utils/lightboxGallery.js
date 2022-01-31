@@ -5,6 +5,8 @@ function createPhotographerMediaLightbox(){
 
     // Clone tous les médias dans le container de la lightbox
     allPhotographerMediasArray.forEach((singleMedia) => {
+        let mediaTitle = singleMedia.getAttribute("data-media-title")
+        singleMedia.setAttribute("aria-label", "Vous regardez " + mediaTitle)
         gallerySpotlightContainer.appendChild(singleMedia.cloneNode(true))
     }); 
 
@@ -12,6 +14,9 @@ function createPhotographerMediaLightbox(){
     const allMediasInCreatedGallery = gallerySpotlightContainer.querySelectorAll(".gallery-item")
     allMediasInCreatedGallery.forEach((singleMediaInCreatedGallery) =>{
         singleMediaInCreatedGallery.firstChild.firstChild.setAttribute("href", "javascript:;")
+        singleMediaInCreatedGallery.firstChild.firstChild.setAttribute("aria-haspopup", "false")
+        singleMediaInCreatedGallery.firstChild.firstChild.removeAttribute("aria-label")
+        singleMediaInCreatedGallery.firstChild.firstChild.removeAttribute("onClick")
         let checkMediaType = singleMediaInCreatedGallery.firstChild.firstChild.firstChild
         // Si le media est une video, ajoute les controls
         if(checkMediaType.nodeName == "VIDEO"){
