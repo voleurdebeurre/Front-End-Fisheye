@@ -20,10 +20,14 @@ class SinglePhotographer{
 
     photographersNode.forEach((photographer) => {
       if(photographer.id == clickedPhotographer){
+        // console.log(photographer)
         createSinglePhotographerCard(photographersNode, photographersMediaNode, photographer)
         createPhotographerMediaGallery(photographersMediaNode, photographer)
       }
     });
+
+    createPhotographerMediaLightbox();
+    
   }
 }
 

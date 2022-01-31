@@ -21,12 +21,16 @@ function createPhotographerMediaGallery(photographersMediaNode,
     const galleryItem = document.createElement("div")
     galleryItem.classList.add("gallery-item");
     galleryItem.setAttribute("data-media-date", media.date)
+    galleryItem.setAttribute("data-media-likes", media.likes)
+    galleryItem.setAttribute("data-media-title", media.title)
+    galleryItem.setAttribute("data-media-id", media.id)
 
     // Image d'un objet de gallerie
     const galleryItemFigure = document.createElement("figure")
     // Lien autour de l'image
     const galleryItemFigcaptionure = document.createElement("a")
-    galleryItemFigcaptionure.setAttribute("href", "#")
+    galleryItemFigcaptionure.setAttribute("href", "javascript:;")
+    galleryItemFigcaptionure.setAttribute("onClick", "javascript:displayClickedMedia(this);")
     galleryItemFigure.appendChild(galleryItemFigcaptionure)
     // Image
     const galleryItemFigcapure = document.createElement("img")
@@ -56,7 +60,7 @@ function createPhotographerMediaGallery(photographersMediaNode,
     // Likes icon
     // Lien autour de l'icone
     const galleryItemLikesIcon = document.createElement("a")
-    galleryItemLikesIcon.setAttribute("href", "#")
+    galleryItemLikesIcon.setAttribute("onClick", "actionOnLikesCounter(this)")
     const galleryItemSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     galleryItemSvg.setAttribute("width", "24")
     galleryItemSvg.setAttribute("height", "24")
@@ -77,19 +81,22 @@ function createPhotographerMediaGallery(photographersMediaNode,
     const galleryItem = document.createElement("div")
     galleryItem.classList.add("gallery-item");
     galleryItem.setAttribute("data-media-date", media.date)
+    galleryItem.setAttribute("data-media-likes", media.likes)
+    galleryItem.setAttribute("data-media-title", media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " "))
+    galleryItem.setAttribute("data-media-id", media.id)
 
     // Image d'un objet de gallerie
     const galleryItemFigure = document.createElement("figure")
     // Lien autour de l'image
     const galleryItemFigcaptionure = document.createElement("a")
-    galleryItemFigcaptionure.setAttribute("href", "#")
+    galleryItemFigcaptionure.setAttribute("href", "javascript:;")
+    galleryItemFigcaptionure.setAttribute("onClick", "javascript:displayClickedMedia(this);")
     galleryItemFigure.appendChild(galleryItemFigcaptionure)
     // Image
     const galleryItemFigcapure = document.createElement("video")
     // Ajoute les attributs src et alt à l'image
     Object.assign(galleryItemFigcapure, {
       src: "./assets/images/" + photographer.name.split(" ")[0] + "/" + media.video,
-      alt: media.title
     })
     // Met l'image dans le lien
     galleryItemFigcaptionure.appendChild(galleryItemFigcapure)
@@ -98,7 +105,7 @@ function createPhotographerMediaGallery(photographersMediaNode,
 
     // Titre d'un objet de gallerie
     const galleryItemFigcaption= document.createElement("figcaption")
-    galleryItemFigcaption.textContent = media.title
+    galleryItemFigcaption.textContent = media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " ")
     galleryItem.appendChild(galleryItemFigcaption);
 
     // Container du compteur de likes de l'objet de galerie
@@ -112,7 +119,7 @@ function createPhotographerMediaGallery(photographersMediaNode,
     // Likes icon
     // Lien autour de l'icone
     const galleryItemLikesIcon = document.createElement("a")
-    galleryItemLikesIcon.setAttribute("href", "#")
+    galleryItemLikesIcon.setAttribute("onClick", "actionOnLikesCounter(this)")
     const galleryItemSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     galleryItemSvg.setAttribute("width", "24")
     galleryItemSvg.setAttribute("height", "24")

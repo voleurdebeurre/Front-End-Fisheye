@@ -50,6 +50,10 @@ for (i = 0; i < l; i++) {
     closeAllSelect(this);
     this.nextSibling.classList.toggle("select-hide");
     this.classList.toggle("select-arrow-active");
+
+    // Appelle la fonction de tri
+    const selectedSortingOption = document.querySelector(".select-selected").textContent
+    reorderMedias(selectedSortingOption);
   });
 }
 
@@ -75,6 +79,50 @@ function closeAllSelect(elmnt) {
   }
 }
 
+// Fonction de tri des médias
+
+function reorderMedias(selectedSortingOption){
+  if(selectedSortingOption == "Popularité"){
+    const allPhotographerMediasByLikes = document.querySelectorAll(".gallery")[0].children
+    const allPhotographerMediasByLikesArray = Array.from(allPhotographerMediasByLikes)
+    let sortedByLikes = allPhotographerMediasByLikesArray.sort(likesSorter)
+    sortedByLikes.forEach(e => document.querySelector(".gallery").appendChild(e));
+  }
+  else if(selectedSortingOption == "Titre"){
+    const allPhotographerMediasByTitle = document.querySelectorAll(".gallery")[0].children
+    const allPhotographerMediasByTitleArray = Array.from(allPhotographerMediasByTitle)
+    let sortedByTitle = allPhotographerMediasByTitleArray.sort(titleSorter)
+    sortedByTitle.forEach(e => document.querySelector(".gallery").appendChild(e));
+  }
+  else if(selectedSortingOption == "Date"){
+    const allPhotographerMediasByDate = document.querySelectorAll(".gallery")[0].children
+    const allPhotographerMediasByDateArray = Array.from(allPhotographerMediasByDate)
+    let sortedByDate = allPhotographerMediasByDateArray.sort(dateSorter)
+    console.log(sortedByDate)
+    sortedByDate.forEach(e => document.querySelector(".gallery").appendChild(e));
+  }
+}
+
+function likesSorter(a,b) {
+  if(parseInt(a.dataset.mediaLikes) > parseInt(b.dataset.mediaLikes)) return -1;
+  if(parseInt(a.dataset.mediaLikes) < parseInt(b.dataset.mediaLikes)) return 1;
+  return 0;
+}
+
+function titleSorter(a,b) {
+  if(a.dataset.mediaTitle < b.dataset.mediaTitle) return -1;
+  if(a.dataset.mediaTitle > b.dataset.mediaTitle) return 1;
+  return 0;
+}
+
+function dateSorter(a,b) {
+  const date1 = new Date(b.dataset.mediaDate)
+  const date2 = new Date(a.dataset.mediaDate)
+
+  return date2 - date1
+}
+
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+

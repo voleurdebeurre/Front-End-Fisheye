@@ -42,9 +42,9 @@ function createSinglePhotographerCard(photographersNode,
   photographersMediaNode.forEach((media) => {
     if(media.photographerId == photographerId){
       photographerGlobalLikesCounter += media.likes;
-
     }
   })
+
   const photographerGlobalLikesCounterContainer = document.querySelector(".photographer-global-likes")
   photographerGlobalLikesCounterContainer.innerHTML = photographerGlobalLikesCounter;
 
@@ -52,6 +52,9 @@ function createSinglePhotographerCard(photographersNode,
   const photographerPriceContainer = document.querySelector(".photographer-price")
   photographerPriceContainer.textContent = photographerPrice + "€/jour"
 
+  // Nom du photographe dans la modal de contact
+  const photographerContactNameContainer = document.querySelector(".contact-photographer-name")
+  photographerContactNameContainer.textContent = photographerName;
 
   return (photographerGlobalLikesCounterContainer,
           photographerNameContainer,
