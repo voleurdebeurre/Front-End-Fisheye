@@ -1,12 +1,17 @@
+const galleryModal = document.querySelectorAll(".lightbox-gallery")[0]
+
 // Crée la lightbox contenant les medias
 function createPhotographerMediaLightbox(){
     const allPhotographerMediasArray = document.querySelectorAll(".gallery-item")
     const gallerySpotlightContainer = document.querySelectorAll(".gallery-spotlight")[0]
+    galleryModal.setAttribute("aria-hidden", "true")
+    galleryModal.setAttribute("aria-describedby", "Gallerie de photos & Videos")
 
     // Clone tous les médias dans le container de la lightbox
     allPhotographerMediasArray.forEach((singleMedia) => {
         let mediaTitle = singleMedia.getAttribute("data-media-title")
         singleMedia.setAttribute("aria-label", "Vous regardez " + mediaTitle)
+        singleMedia.setAttribute("aria-hidden", "true")
         gallerySpotlightContainer.appendChild(singleMedia.cloneNode(true))
     }); 
 
@@ -37,7 +42,7 @@ function createPhotographerMediaLightbox(){
 
 // Ferme la lightbox
 function closeMediaGallery(){
-    const galleryModal = document.querySelectorAll(".lightbox-gallery")[0]
+    galleryModal.setAttribute("aria-hidden", "true")
     galleryModal.style.display = "none"
 }
 
@@ -46,8 +51,10 @@ function displayClickedMedia(clickedMedia){
     let removeActiveMediaClass = document.querySelectorAll(".media-active");
     removeActiveMediaClass.forEach((activeMedia) =>{
         activeMedia.classList.remove("media-active")
+        activeMedia.setAttribute("aria-hidden", "true")
     })
     const galleryModal = document.querySelectorAll(".lightbox-gallery")[0]
+    galleryModal.setAttribute("aria-hidden", "false")
     galleryModal.style.display = "flex";
 
     const getClickedMediaId = clickedMedia.parentNode.parentNode.getAttribute("data-media-id")
@@ -56,6 +63,7 @@ function displayClickedMedia(clickedMedia){
     allMediasInGallery.forEach((singleMediaInGallery) => {
         if(singleMediaInGallery.getAttribute("data-media-id") == getClickedMediaId){
             singleMediaInGallery.classList.add("media-active")
+            activeMedia.setAttribute("aria-hidden", "false")
             addOrRemoveNavArrows()
         }
     });
@@ -102,6 +110,8 @@ function nextGalleryItem(){
     addOrRemoveNavArrows()
     const activeMediaItem = document.querySelectorAll(".media-active")[0]
     activeMediaItem.nextSibling.classList.add("media-active")
+    activeMediaItem.setAttribute("aria-hidden", "true")
+    activeMediaItem.nextSibling.setAttribute("aria-hidden", "false")
     activeMediaItem.classList.remove("media-active")
     addOrRemoveNavArrows()
 }
@@ -109,6 +119,8 @@ function nextGalleryItem(){
 function prevGalleryItem(){
     addOrRemoveNavArrows()
     const activeMediaItem = document.querySelectorAll(".media-active")[0]
+    activeMediaItem.setAttribute("aria-hidden", "true")
+    activeMediaItem.previousElementSibling.setAttribute("aria-hidden", "false")
     activeMediaItem.previousElementSibling.classList.add("media-active")
     activeMediaItem.classList.remove("media-active")
     addOrRemoveNavArrows()

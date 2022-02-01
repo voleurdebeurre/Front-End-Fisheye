@@ -27,6 +27,10 @@
   font-family: "DM Sans", sans-serif;
 }
 
+*:focus{
+  border: 1px dotted var(--main-text-color);
+}
+
 /* ---------------------- */
 /* TEXT DECLARATIONS */
 /* ---------------------- */
@@ -302,6 +306,10 @@ h1 {
 .gallery-item figure, .gallery-item figure a img, .gallery-item video{
   margin: 0;
   width: 100%;
+}
+
+.gallery-item a{
+  display: block;
 }
 
 .gallery-item video{

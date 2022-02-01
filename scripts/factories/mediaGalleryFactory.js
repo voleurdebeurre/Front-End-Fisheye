@@ -69,6 +69,8 @@ function createPhotographerMediaGallery(photographersMediaNode,
     galleryItemSvg.setAttribute("width", "24")
     galleryItemSvg.setAttribute("height", "24")
     galleryItemSvg.setAttribute("viewBox", "0 0 24 24")
+    galleryItemSvg.setAttribute("aria-describedby", "Compteur de likes du média " + media.title)
+    galleryItemSvg.setAttribute("role", "img")
     const galleryItemSvgPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
     galleryItemSvgPath.setAttribute("d", "M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
     galleryItemSvg.appendChild(galleryItemSvgPath);
@@ -110,9 +112,9 @@ function createPhotographerMediaGallery(photographersMediaNode,
     galleryItem.appendChild(galleryItemFigure);
 
     // Titre d'un objet de gallerie
-    const galleryItemFigcaption= document.createElement("figcaption")
+    const galleryItemFigcaption = document.createElement("figcaption")
     galleryItemFigcaption.textContent = media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " ")
-    galleryItem.appendChild(galleryItemFigure);
+    galleryItem.appendChild(galleryItemFigcaption);
 
     // Container du compteur de likes de l'objet de galerie
     const galleryItemLikesContainer = document.createElement("div")
@@ -131,6 +133,8 @@ function createPhotographerMediaGallery(photographersMediaNode,
     galleryItemSvg.setAttribute("width", "24")
     galleryItemSvg.setAttribute("height", "24")
     galleryItemSvg.setAttribute("viewBox", "0 0 24 24")
+    galleryItemSvg.setAttribute("aria-describedby", "Compteur de likes du média " + media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " "))
+    galleryItemSvg.setAttribute("role", "img")
     const galleryItemSvgPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
     galleryItemSvgPath.setAttribute("d", "M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
     galleryItemSvg.appendChild(galleryItemSvgPath);
