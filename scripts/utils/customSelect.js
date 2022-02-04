@@ -98,7 +98,6 @@ function reorderMedias(selectedSortingOption){
     const allPhotographerMediasByDate = document.querySelectorAll(".gallery")[0].children
     const allPhotographerMediasByDateArray = Array.from(allPhotographerMediasByDate)
     let sortedByDate = allPhotographerMediasByDateArray.sort(dateSorter)
-    console.log(sortedByDate)
     sortedByDate.forEach(e => document.querySelector(".gallery").appendChild(e));
   }
 }

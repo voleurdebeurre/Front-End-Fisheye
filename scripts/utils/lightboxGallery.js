@@ -22,6 +22,8 @@ function createPhotographerMediaLightbox(){
         singleMediaInCreatedGallery.firstChild.firstChild.setAttribute("aria-haspopup", "false")
         singleMediaInCreatedGallery.firstChild.firstChild.removeAttribute("aria-label")
         singleMediaInCreatedGallery.firstChild.firstChild.removeAttribute("onClick")
+        let likesCounterToRemove = singleMediaInCreatedGallery.lastChild
+        singleMediaInCreatedGallery.removeChild(likesCounterToRemove)
         let checkMediaType = singleMediaInCreatedGallery.firstChild.firstChild.firstChild
         // Si le media est une video, ajoute les controls
         if(checkMediaType.nodeName == "VIDEO"){
@@ -63,7 +65,7 @@ function displayClickedMedia(clickedMedia){
     allMediasInGallery.forEach((singleMediaInGallery) => {
         if(singleMediaInGallery.getAttribute("data-media-id") == getClickedMediaId){
             singleMediaInGallery.classList.add("media-active")
-            activeMedia.setAttribute("aria-hidden", "false")
+            singleMediaInGallery.setAttribute("aria-hidden", "false")
             addOrRemoveNavArrows()
         }
     });
@@ -77,15 +79,12 @@ function addOrRemoveNavArrows(){
     const galleryLeftArrow = document.querySelectorAll(".lightbox-controls:nth-child(1)")[0].children[0].children[0]
     const galleryRightArrow = document.querySelectorAll(".lightbox-controls:nth-child(3)")[0].children[0].children[0]
 
-    console.log(activeMediaItem, allMediasInGallery[0], allMediasInGallery[allMediasInGallery.length -1])
     if(activeMediaItem == allMediasInGallery[0]){
-        console.log("premier media")
         galleryLeftArrow.style.display = "none"
         galleryRightArrow.style.display = "block"
     }else if(activeMediaItem == allMediasInGallery[allMediasInGallery.length -1]){
         galleryRightArrow.style.display = "none"   
         galleryLeftArrow.style.display = "block"
-        console.log("dernier media")
     }else{
         galleryLeftArrow.style.display = "block"
         galleryRightArrow.style.display = "block"
