@@ -78,7 +78,7 @@ body {
 .rounded-picture{
   border-radius: 50%;
   width: 200px;
-  aspect-ratio: 1;
+  height: 200px;
   object-fit: cover;
   transition: all .2s;
 }
@@ -314,12 +314,12 @@ h1 {
 
 .gallery-item video{
   object-fit: cover;
-  aspect-ratio: 1;
+  height: 30em;
 }
 
 .gallery-item figure a img{
   border-radius: .225rem;
-  aspect-ratio: 1;
+  height: 30em;
   object-fit: cover;
 }
 
