@@ -65,15 +65,11 @@ function createPhotographerMediaGallery(photographersMediaNode,
     const galleryItemLikesIcon = document.createElement("a")
     galleryItemLikesIcon.setAttribute("onClick", "actionOnLikesCounter(this)")
     galleryItemLikesIcon.setAttribute("href", "javascript:;")
-    const galleryItemSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-    galleryItemSvg.setAttribute("width", "24")
-    galleryItemSvg.setAttribute("height", "24")
-    galleryItemSvg.setAttribute("viewBox", "0 0 24 24")
-    galleryItemSvg.setAttribute("aria-describedby", "Compteur de likes du média " + media.title)
+    galleryItemLikesIcon.setAttribute("aria-label", "Incrémenter le compteur de likes pour ce media")
+    galleryItemLikesIcon.innerHTML = "Incrémenter le compteur de likes pour ce media"
+    const galleryItemSvg = document.createElement("span")
+    galleryItemSvg.setAttribute("class", "heart-not-clicked")
     galleryItemSvg.setAttribute("role", "img")
-    const galleryItemSvgPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
-    galleryItemSvgPath.setAttribute("d", "M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-    galleryItemSvg.appendChild(galleryItemSvgPath);
     galleryItemLikesIcon.appendChild(galleryItemSvg);
 
     galleryItemLikesContainer.appendChild(galleryItemLikesIcon)
@@ -98,6 +94,7 @@ function createPhotographerMediaGallery(photographersMediaNode,
     galleryItemFigcaptionLink.setAttribute("href", "javascript:;")
     galleryItemFigcaptionLink.setAttribute("aria-haspopup", "true")
     galleryItemFigcaptionLink.setAttribute("aria-label", "Agrandir la video " + media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " "))
+    galleryItemFigcaptionLink.innerHTML = "Agrandir la video " + media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " ")
     galleryItemFigcaptionLink.setAttribute("onClick", "javascript:displayClickedMedia(this);")
     galleryItemFigure.appendChild(galleryItemFigcaptionLink)
     // Image
@@ -129,15 +126,10 @@ function createPhotographerMediaGallery(photographersMediaNode,
     const galleryItemLikesIcon = document.createElement("a")
     galleryItemLikesIcon.setAttribute("onClick", "actionOnLikesCounter(this)")
     galleryItemLikesIcon.setAttribute("aria-label", "Incrémenter le compteur de likes pour ce media")
-    const galleryItemSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-    galleryItemSvg.setAttribute("width", "24")
-    galleryItemSvg.setAttribute("height", "24")
-    galleryItemSvg.setAttribute("viewBox", "0 0 24 24")
-    galleryItemSvg.setAttribute("aria-describedby", "Compteur de likes du média " + media.video.replace(/\.[^/.]+$/, "").replace(/_/g, " "))
-    galleryItemSvg.setAttribute("role", "img")
-    const galleryItemSvgPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
-    galleryItemSvgPath.setAttribute("d", "M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-    galleryItemSvg.appendChild(galleryItemSvgPath);
+    galleryItemLikesIcon.innerHTML = "Incrémenter le compteur de likes pour ce media"
+    galleryItemLikesIcon.setAttribute("class", "single-likes-counter")
+    const galleryItemSvg = document.createElement("span")
+    galleryItemSvg.setAttribute("class", "heart-not-clicked")
     galleryItemLikesIcon.appendChild(galleryItemSvg);
 
     galleryItemLikesContainer.appendChild(galleryItemLikesIcon)

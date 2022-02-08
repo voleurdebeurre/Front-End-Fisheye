@@ -5,7 +5,6 @@ function createPhotographerMediaLightbox(){
     const allPhotographerMediasArray = document.querySelectorAll(".gallery-item")
     const gallerySpotlightContainer = document.querySelectorAll(".gallery-spotlight")[0]
     galleryModal.setAttribute("aria-hidden", "true")
-    galleryModal.setAttribute("aria-describedby", "Gallerie de photos & Videos")
 
     // Clone tous les médias dans le container de la lightbox
     allPhotographerMediasArray.forEach((singleMedia) => {

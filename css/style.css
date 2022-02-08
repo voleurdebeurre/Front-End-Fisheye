@@ -134,11 +134,13 @@ h1 {
   margin: 0 0 .10rem 0;
 }
 
-.photographer_section article h4 {
+.home-tagline{
+  font-size: var(--fs-s);
   color: var(--color-black);
 }
 
-.photographer_section article h5 {
+.home-price{
+  font-size: var(--fs-s);
   color: var(--sec-text-color);
 }
 
@@ -187,6 +189,7 @@ h1 {
 }
 
 .photographer-footer_meta p{
+  display: block;
   font-size: var(--fs-s)
 }
 
@@ -195,6 +198,10 @@ h1 {
   flex-direction: row;
   gap: .5rem;
   align-items: center;
+}
+
+.photographer-footer_likes img{
+  width: 24px;
 }
 
 .photographer-header_contact{
@@ -240,23 +247,30 @@ h1 {
 
 .select-selected{
   background: var(--main-color);
-  border-radius: .5rem .5rem 0 0;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
 }
 
 .select-selected:after{
-  position: absolute;
   content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: var(--color-white) transparent transparent transparent;
+  font-size: var(--fs-m);
+  font-weight: var(--fw-bold);
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  background: url("../assets/icons/chevron-down-solid.svg") no-repeat;
 }
 
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent var(--color-white) transparent;
+  width: 16px;
+  height: 16px;
+  background: url("../assets/icons/chevron-up-solid.svg") no-repeat;
   top: 7px;
+}
+
+.select-selected.select-arrow-active {
+  border-radius: .5rem .5rem 0 0;
 }
 
 .select-items div,.select-selected {
@@ -312,6 +326,11 @@ h1 {
   display: block;
 }
 
+.gallery-item figure a{
+  line-height: 0; 
+  color: transparent
+}
+
 .gallery-item video{
   object-fit: cover;
   height: 30em;
@@ -340,8 +359,25 @@ h1 {
   font-weight: var(--fw-bold);
 }
 
-.gallery-likes-counter a svg{
-  fill: var(--main-color);
+.gallery-likes-counter a{
+  display: block;
+  width: 24px;
+  font-size: 1px;
+  color: transparent;
+}
+
+.gallery-likes-counter a span{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.heart-not-clicked{
+  background: url("../assets/icons/heart-regular.svg") no-repeat;
+}
+
+.heart-clicked{
+  background: url("../assets/icons/heart-solid.svg") no-repeat;
 }
 
 /* LIGHTBOX */
@@ -381,18 +417,22 @@ h1 {
   display: flex;
   justify-content: center;
   cursor: default;
+  font-size: 1px;
+  color: transparent;
 }
 
 .gallery-spotlight > .gallery-item img{
   height: 90vh;
   width: auto;
   object-fit: contain;
+  max-width: 90vw;
 }
 
 .gallery-spotlight > .gallery-item video{
   height: 90vh;
   object-fit: none;
   aspect-ratio: auto;
+  max-width: 90vw;
 }
 
 .lightbox-controls:nth-child(1){

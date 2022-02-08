@@ -19,20 +19,22 @@ function createPhotographerCard(photographerName, photographerId, photographerCi
   // Crée les tags qui contiennent les ville, pays, tagline et prix du photographe
   const h2 = document.createElement("h2");
   const h3 = document.createElement("h3");
-  const h4 = document.createElement("h4");
-  const h5 = document.createElement("h5");
+  const staticTagline = document.createElement("p");
+  staticTagline.classList.add("home-tagline")
+  const staticPrice = document.createElement("p");
+  staticPrice.classList.add("home-price")
   h2.textContent = photographerName;
   h3.textContent = photographerCity + ", " + photographerCountry;
-  h4.textContent = photographerTagline;
-  h5.textContent = photographerPrice + "€/jour";
+  staticTagline.textContent = photographerTagline;
+  staticPrice.textContent = photographerPrice + "€/jour";
 
   // Crée le bloc entier d'un photographe
   article.appendChild(articleLink);
   articleLink.appendChild(img);
   articleLink.appendChild(h2);
   articleLink.appendChild(h3);
-  articleLink.appendChild(h4);
-  articleLink.appendChild(h5);
+  article.appendChild(staticTagline);
+  article.appendChild(staticPrice);
 
   return (article);
 }
